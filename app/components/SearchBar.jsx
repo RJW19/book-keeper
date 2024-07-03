@@ -1,61 +1,29 @@
-"use client";
-import { useState, React } from "react";
-import "./SearchBar.css";
-import axios from "axios";
+import React from 'react';
+import './SearchBar.css';
 
+const SearchBar = ({ query, setQuery, handleSearch }) => {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
-function handleChange(event) {
-    const book = event.target.value;
-    setBook(book);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    axios
-      .get(
-        "https://www.googleapis.com/books/v1/volumes?q=" +
-          book +
-          "&key=" +
-          apiKey +
-          "&maxResults=10"
-      )
-      .then((data) => {
-        console.log(data.data.items);
-        setResult(data.data.items);
-      });
-  }
-
-const SearchBar = () => {
-  const [book, setBook] = useState("");
-  const [result, setResult] = useState([]);
-  const [apiKey, setApiKey] = useState(
-    "AIzaSyBiHFShC_vTEsA0FEabESTE1VHzd7ah7fw"
-  );
   return (
-    <div className="input-wrapper">
-        <input placeholder="Search for a book..."
-        type="text"
-        onChange={handleChange}
-        className="form-control mt-10"
-        autoComplete="off"
+    <div className="search-bar-container">
+      <div className="input-wrapper">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for books..."
+          onKeyDown={handleKeyDown}
         />
-        <button type="submit" className="btn btn-primary">
+        <button onClick={handleSearch} className="search-button">
           Search
         </button>
-         
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
-
-
-/* <input
-            type="text"
-            onChange={handleChange}
-            className="form-control mt-10"
-            placeholder="Search"
-            autoComplete="off"
-          /> */
+export default SearchBar;

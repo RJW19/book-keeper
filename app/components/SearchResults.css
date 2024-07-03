@@ -1,0 +1,89 @@
+.results-grid {
+    display: grid;
+    gap: 20px; /* Adjust the gap between cards as needed */
+  }
+  
+  @media (min-width: 1200px) {
+    /* Large screens (desktops) */
+    .results-grid {
+      grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    /* Medium screens (small desktops, tablets in landscape) */
+    .results-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    /* Small screens (tablets in portrait) */
+    .results-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    /* Extra small screens (mobile phones) */
+    .results-grid {
+      grid-template-columns: 1fr; /* 1 column */
+    }
+  }
+  
+  .card {
+    background-color: var(--orange-surface);
+    border-radius: 10px;
+    box-shadow: 0 0 8px var(--orange-7);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .card img {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the image */
+  }
+  
+  .card-body {
+    margin-top: 10px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    color: var(--orange-11);
+    height: 3rem; /* Adjust height to fit two lines of text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to two lines */
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .card-title::after {
+    content: attr(data-full-title);
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  
+  .card-title:hover::after {
+    opacity: 1;
+  }
+  
+  .card-text {
+    color: var(--orange-8);
+  }
+  

@@ -1,0 +1,102 @@
+.navbar {
+  background-color: #fff;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navLinksWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto;
+  flex: 1; /* Allow navLinks to take up available space */
+  justify-content: center; /* Center the nav links */
+}
+
+.navLink {
+  color: #a38343;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.navLink:hover {
+  background-color: var(--orange-7);
+  color: var(--orange-contrast);
+  border-radius: 5px;
+}
+
+.navLink.active {
+  background-color: var(--orange-9);
+  color: var(--orange-contrast);
+  border-radius: 5px;
+}
+
+.authButtonWrapper {
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.authButton {
+  background-color: #a38343; /* Updated background color for consistency */
+  color: #fff; /* Text color to match the nav links */
+  padding: 0.5rem 1rem;
+  border: none; /* Removed border to match nav links */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authButton:hover {
+  background-color: var(--orange-7);
+  color: var(--orange-contrast);
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .navLinksWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navLinks {
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navLink {
+    padding: 0.5rem;
+  }
+
+  .authButtonWrapper {
+    flex-direction: column; /* Change direction to column */
+    align-items: center;
+    padding-right: 0; /* Remove padding on small screens */
+    margin-top: 0.5rem; /* Add some margin at the top */
+  }
+
+  .authButton {
+    margin-top: 0.5rem; /* Ensure there's space between buttons */
+    padding-right: 0;
+  }
+}
