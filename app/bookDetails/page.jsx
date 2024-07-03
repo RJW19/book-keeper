@@ -1,8 +1,5 @@
 // pages/book/[id].jsx
 import React from 'react';
-import { useRouter } from 'next/router';
-import fs from 'fs';
-import path from 'path';
 
 const BookDetail = ({ book }) => {
   if (!book) {
@@ -28,28 +25,6 @@ const BookDetail = ({ book }) => {
   );
 };
 
-export async function getStaticPaths() {
-  // Load your results here
-  const filePath = path.join(process.cwd(), 'data', 'results.json');
-  const jsonData = fs.readFileSync(filePath);
-  const results = JSON.parse(jsonData);
 
-  const paths = results.map((book) => ({
-    params: { id: book.id || book.key },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
-  // Load your results here
-  const filePath = path.join(process.cwd(), 'data', 'results.json');
-  const jsonData = fs.readFileSync(filePath);
-  const results = JSON.parse(jsonData);
-
-  const book = results.find(b => (b.id || b.key) === params.id);
-
-  return { props: { book } };
-}
 
 export default BookDetail;
