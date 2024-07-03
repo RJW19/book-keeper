@@ -3,7 +3,6 @@ const nextConfig = {
   basePath: "/book-keeper",
   //output: "export",
   reactStrictMode: true,
-  distDir: "dist",
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
   },
