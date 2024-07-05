@@ -1,3 +1,5 @@
+import { connectToDB } from "@/utils/database";
+
 const express = require("express");
 const mongoose = require("mongoose");
 const User = require("./user");
@@ -8,17 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/library", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// Create a new user
-app.post("/users", async (req, res) => {
-  const user = new User(req.body);
-  await user.save();
-  res.send(user);
-});
+connectToDB();
 
 // Create a new collection for a user
 app.post("/users/:userId/collections", async (req, res) => {
